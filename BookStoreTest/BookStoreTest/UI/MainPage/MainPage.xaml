@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BookStoreTest.UI"
+    x:Class="BookStoreTest.MainPage"
+    Title="Book Store Test">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal" Padding="8" HorizontalOptions="End">
+            <Label Text="Favorites" VerticalOptions="Center" />
+            <Switch
+                IsToggled="{Binding IsFavoritesToggled}"
+                VerticalOptions="Center" />
+        </StackLayout>
+        <CollectionView
+            ItemsSource="{Binding Volumes}"
+            VerticalOptions="FillAndExpand"
+            SelectionMode="Single"
+            SelectionChanged="CollectionView_SelectionChanged"
+            RemainingItemsThreshold="5"
+            RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" Padding="8">
+                        <Image
+                            Source="{Binding VolumeInfo.ImageLinks.Thumbnail}"
+                            Aspect="AspectFill"
+                            HeightRequest="250"
+                            BackgroundColor="Black" />
+                        <Label Text="{Binding VolumeInfo.Title}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+

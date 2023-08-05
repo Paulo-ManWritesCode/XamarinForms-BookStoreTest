@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="UI\" />
+    <None Remove="Core\" />
+    <None Remove="Core\Books\Models\" />
+    <None Remove="Core\GoogleBooks\" />
+    <None Remove="UI\MainPage\" />
+    <None Remove="UI\DetailPage\" />
+    <None Remove="UI\Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\" />
+    <Folder Include="Core\" />
+    <Folder Include="Core\GoogleBooks\Models\" />
+    <Folder Include="Core\GoogleBooks\" />
+    <Folder Include="UI\MainPage\" />
+    <Folder Include="UI\DetailPage\" />
+    <Folder Include="UI\Converters\" />
+  </ItemGroup>
+</Project>
